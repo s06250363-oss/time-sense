@@ -81,6 +81,10 @@ export default function Home() {
 
   const error =
     elapsedTime !== null ? Math.abs(difference) : 0;
+      const accuracy =
+    elapsedTime !== null
+      ? (1 - error / targetTime) * 100
+      : 0;
 
   const resultText =
     error < 0.05
@@ -177,7 +181,7 @@ export default function Home() {
 </p>
 
 <p className="mb-4 text-2xl font-bold text-[#172A46]">
-  目標：{targetTime.toFixed(2)}秒
+  目標：{targetTime.toFixed(3)}秒
 </p>
 
 <p className="mb-6 text-sm text-[#68727F]">
@@ -252,7 +256,7 @@ export default function Home() {
                 </p>
 
                 <p className="mt-1 text-2xl font-bold text-[#172A46]">
-                  {targetTime.toFixed(2)}秒
+                  {targetTime.toFixed(3)}秒
                 </p>
 
                 <p className="mt-6 text-sm text-[#68727F]">
@@ -261,6 +265,13 @@ export default function Home() {
 
                 <p className="mt-1 text-5xl font-bold text-[#172A46]">
                   {elapsedTime.toFixed(3)}秒
+                </p>
+                                <p className="mt-6 text-sm text-[#68727F]">
+                  精度
+                </p>
+
+                <p className="mt-1 text-3xl font-bold text-[#172A46]">
+                  {accuracy.toFixed(3)}%
                 </p>
               </div>
 
